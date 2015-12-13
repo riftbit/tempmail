@@ -20,7 +20,7 @@ func TestGetDomains(t *testing.T) {
 
 func TestGetEmails(t *testing.T) {
 	Convey("GetEmails() should return no emails", t, func() {
-		emails, err := GetEmails(TemporaryUser{"fqwfwqrwqr", "@mailzi.ru"})
+		emails, err := GetEmails(Mailbox("fqwfwqrwqr@mailzi.ru"))
 
 		So(emails, ShouldBeEmpty)
 		So(err, ShouldNotBeNil)

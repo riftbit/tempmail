@@ -7,7 +7,7 @@ import (
 	"gopkg.in/resty.v0"
 )
 
-const host = "http://api.temp-mail.ru/"
+const host = "http://api.temp-mail.ru"
 
 // GetDomains returns slice of available domains.
 func GetDomains() (domains []string, err error) {
