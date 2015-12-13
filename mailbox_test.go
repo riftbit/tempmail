@@ -29,3 +29,12 @@ func TestMD5(t *testing.T) {
 		// So(encodedEmail, ShouldEqual, "3d3b4ecf96c195bbd6649711825d2d63")
 	})
 }
+
+func TestEmails(t *testing.T) {
+	Convey("Emails() should return no emails", t, func() {
+		emails, err := New("fqwfwqrwqr@mailzi.ru").Emails()
+
+		So(emails, ShouldBeEmpty)
+		So(err, ShouldNotBeNil)
+	})
+}
