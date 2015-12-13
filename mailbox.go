@@ -6,7 +6,7 @@ import (
 	"math/rand"
 )
 
-
+// Mailbox represents temprorary email address.
 type Mailbox string
 
 // New returns pointer to the temprorary mailbox.
@@ -15,20 +15,21 @@ func New(email string) *Mailbox {
 	return &m
 }
 
+// Random retuns randomly generated temporary mailbox.
 func Random() (*Mailbox, error) {
 	domains, err := GetDomains()
-	
+
 	if err != nil {
 		return new(Mailbox), err
 	}
-	
+
 	var m Mailbox
-	
+
 	for _, i := range rand.Perm(len(domains)) {
 		m = Mailbox("test" + domains[i])
 		break
 	}
-	
+
 	return &m, nil
 }
 
@@ -42,7 +43,6 @@ func (m Mailbox) MD5() string {
 	hash := md5.Sum([]byte(m))
 	return hex.EncodeToString(hash[:])
 }
-
 
 // MD5Encoder provives a function that return md5-encoded email address.
 type MD5Encoder interface {

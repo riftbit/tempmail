@@ -26,10 +26,10 @@ func TestGetEmails(t *testing.T) {
 		So(err, ShouldNotBeNil)
 	})
 
-// 	Convey("GetEmails() should return non-empty []Email", t, func() {
-// 		emails, err := GetEmails("mojob@mailzi.ru")
+	// 	Convey("GetEmails() should return non-empty []Email", t, func() {
+	// 		emails, err := GetEmails("mojob@mailzi.ru")
 
-// 		So(err, ShouldBeNil)
-// 		So(emails, ShouldNotBeEmpty)
-// 	})
+	// 		So(err, ShouldBeNil)
+	// 		So(emails, ShouldNotBeEmpty)
+	// 	})
 }

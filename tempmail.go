@@ -23,7 +23,6 @@ func GetDomains() (domains []string, err error) {
 	return
 }
 
-
 // GetEmails returns slice of emails, if you have any.
 func GetEmails(email MD5Encoder) (emails []Email, err error) {
 	resp, err := resty.New().R().
@@ -40,7 +39,7 @@ func GetEmails(email MD5Encoder) (emails []Email, err error) {
 
 	case 404:
 		var tempMailErrMap map[string]string
-		
+
 		if err = json.Unmarshal([]byte(resp.String()), &tempMailErrMap); err != nil {
 			return
 		}
