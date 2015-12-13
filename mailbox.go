@@ -3,7 +3,6 @@ package tempmail
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"math/rand"
 )
 
 // Mailbox represents temprorary email address.
@@ -17,18 +16,15 @@ func New(email string) *Mailbox {
 
 // Random retuns randomly generated temporary mailbox.
 func Random() (*Mailbox, error) {
-	domains, err := GetDomains()
+	var m Mailbox
+
+	domain, err := RandomDomain()
 
 	if err != nil {
 		return new(Mailbox), err
 	}
 
-	var m Mailbox
-
-	for _, i := range rand.Perm(len(domains)) {
-		m = Mailbox("test" + domains[i])
-		break
-	}
+	m = Mailbox("test" + domain)
 
 	return &m, nil
 }

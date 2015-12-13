@@ -9,20 +9,6 @@ import (
 
 const host = "http://api.temp-mail.ru"
 
-// GetDomains returns slice of available domains.
-func GetDomains() (domains []string, err error) {
-	resp, err := resty.New().R().
-		Get(host + "/request/domains/format/json")
-
-	if err != nil {
-		return
-	}
-
-	err = json.Unmarshal([]byte(resp.String()), &domains)
-
-	return
-}
-
 // GetEmails returns slice of emails, if you have any.
 func GetEmails(email MD5Encoder) (emails []Email, err error) {
 	resp, err := resty.New().R().
