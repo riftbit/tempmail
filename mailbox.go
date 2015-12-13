@@ -67,13 +67,8 @@ func (m *Mailbox) Emails() (emails []Email, err error) {
 	}
 }
 
-// MD5 returns md5-encoded email of current TemporaryUser.
-func (m Mailbox) MD5() string {
-	hash := md5.Sum([]byte(m))
+// MD5 returns md5-encoded email of current temporary mailbox.
+func (m *Mailbox) MD5() string {
+	hash := md5.Sum([]byte(*m))
 	return hex.EncodeToString(hash[:])
-}
-
-// MD5Encoder provives a function that return md5-encoded email address.
-type MD5Encoder interface {
-	MD5() string
 }

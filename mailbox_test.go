@@ -23,7 +23,7 @@ func TestRandom(t *testing.T) {
 
 func TestMD5(t *testing.T) {
 	Convey("MD5() should return a valid md5", t, func() {
-		encodedEmail := Mailbox("user@test.tld").MD5()
+		encodedEmail := New("user@test.tld").MD5()
 
 		So(encodedEmail, ShouldHaveLength, 32)
 		// So(encodedEmail, ShouldEqual, "3d3b4ecf96c195bbd6649711825d2d63")
