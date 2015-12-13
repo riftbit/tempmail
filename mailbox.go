@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"strings"
 
 	"gopkg.in/resty.v0"
 )
@@ -33,7 +34,7 @@ func Random() (*Mailbox, error) {
 	return &m, nil
 }
 
-// Emails returns slice of emails, if you have any.
+// Emails returns slice of emails, if you have any. Otherwise error will be returned.
 func (m *Mailbox) Emails() (emails []Email, err error) {
 	resp, err := resty.New().R().
 		Get(host + "/request/mail/id/" + m.MD5() + "/format/json/")
@@ -71,4 +72,9 @@ func (m *Mailbox) Emails() (emails []Email, err error) {
 func (m *Mailbox) MD5() string {
 	hash := md5.Sum([]byte(*m))
 	return hex.EncodeToString(hash[:])
+}
+
+// Domain returns domain of current mailbox. Will panic if email is not valid.
+func (m *Mailbox) Domain() string {
+	return "@" + strings.Split(string(*m), "@")[1]
 }

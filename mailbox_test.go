@@ -26,7 +26,15 @@ func TestMD5(t *testing.T) {
 		encodedEmail := New("user@test.tld").MD5()
 
 		So(encodedEmail, ShouldHaveLength, 32)
-		// So(encodedEmail, ShouldEqual, "3d3b4ecf96c195bbd6649711825d2d63")
+	})
+}
+
+func TestDomain(t *testing.T) {
+	Convey("Domain() should return a valid domain", t, func() {
+		m := New("user@test.tld")
+
+		So(func() { m.Domain() }, ShouldNotPanic)
+		So(m.Domain(), ShouldStartWith, "@")
 	})
 }
 
